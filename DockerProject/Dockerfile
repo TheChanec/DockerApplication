@@ -8,14 +8,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-nanoserver-1803 AS build
 WORKDIR /src
-COPY ["DockerApplication/DockerApplication.csproj", "DockerApplication/"]
+COPY ["DockerProject/DockerProject.csproj", "DockerProject/"]
 RUN dotnet restore "DockerApplication/DockerApplication.csproj"
 COPY . .
-WORKDIR "/src/DockerApplication"
-RUN dotnet build "DockerApplication.csproj" -c Release -o /app
+WORKDIR "/src/DockerProject"
+RUN dotnet build "DockerProject.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "DockerApplication.csproj" -c Release -o /app
+RUN dotnet publish "DockerProject.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
