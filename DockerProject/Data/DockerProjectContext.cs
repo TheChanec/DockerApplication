@@ -15,5 +15,7 @@ namespace DockerProject.Models
         }
 
         public DbSet<DockerProject.EntityTest> EntityTest { get; set; }
+
+        public DbSet<DockerProject.EntityTest2> EntityTest2 { get; set; }
     }
 }
